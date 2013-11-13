@@ -1,0 +1,43 @@
+﻿/*
+ * This file is part of the Face Fusion project. 
+ *
+ * Copyright (c) 2013 Joshua Blake
+ *
+ * This code is licensed to you under the terms of the MIT license.
+ * See https://facefusion.codeplex.com/license for a copy of the license.
+ */
+
+using System;
+using Blake.NUI.WPF.Utility;
+using Microsoft.Kinect;
+
+namespace FaceFusion.Services
+{
+    class FusionWorkItem : PoolItem<KinectFormat>
+    {
+        public DepthImagePixel[] data { get; private set; }
+        public byte[] colordata { get; private set; }
+
+        public FusionWorkItem(DepthImagePixel[] data, byte[] colordata, KinectFormat kf)
+            : base(kf)
+        {
+            if (data == null || colordata == null)
+            {
+                throw new ArgumentNullException();
+            }
+            this.data = data;
+            this.colordata = colordata;
+        }
+
+        public static FusionWorkItem Create(KinectFormat f)
+        {
+            var depth_size = FormatHelper.GetDepthSize(f.DepthImageFormat);
+            var color_size = FormatHelper.GetColorSize(f.ColorImageFormat);
+
+            var data = new DepthImagePixel[(int)(depth_size.Width * depth_size.Height)];
+            var colordata = new byte[(int) (color_size.Width * color_size.Height * 4)];
+            int colorLen = (int)(color_size.Width * color_size.Height);
+            return new FusionWorkItem(data, colordata, f);
+        }
+    }
+}

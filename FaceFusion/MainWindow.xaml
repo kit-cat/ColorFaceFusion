@@ -1,0 +1,63 @@
+﻿<Window x:Class="FaceFusion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:t="clr-namespace:Microsoft.Kinect.Toolkit;assembly=Microsoft.Kinect.Toolkit"
+        xmlns:views="clr-namespace:FaceFusion.Views"
+        Title="Face Fusion"
+        Width="1070"
+        Height="735"
+        Left="0"
+        Top="0">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush"
+                         Color="#ff6e6e6e" />
+    </Window.Resources>
+
+    <Grid Name="layoutGrid"
+          Margin="10 0 10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Right"
+                   Foreground="{StaticResource MediumGreyBrush}"
+                   FontFamily="Segoe UI"
+                   FontWeight="Bold"
+                   FontSize="18">Face Fusion</TextBlock>
+        <t:KinectSensorChooserUI KinectSensorChooser="{Binding KinectSensorChooser}"
+                                 HorizontalAlignment="Center"
+                                 IsListening="{Binding IsListening}"
+                                 Grid.Row="0" />
+        <TextBlock Grid.Row="0"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Foreground="{StaticResource MediumGreyBrush}"
+                   FontFamily="Segoe UI"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Text="{Binding VoiceHeard}"/>
+        <views:ImageView Grid.Row="1" />
+        <views:FusionControlView Grid.Row="2" />
+        <StatusBar Grid.Row="3"
+                   HorizontalAlignment="Stretch"
+                   Name="statusBar"
+                   VerticalAlignment="Bottom"
+                   Background="White"
+                   Foreground="{StaticResource MediumGreyBrush}">
+            <StatusBarItem Padding="0 0 0 10">
+                <TextBlock Text="{Binding StatusMessage}"
+                           FontSize="18" />
+            </StatusBarItem>
+            <StatusBarItem Padding="0 0 0 10">
+                <TextBlock Text="{Binding FusionManager.FusionStatusMessage}"
+                           FontSize="18"
+                           Margin="30,0,0,0"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
