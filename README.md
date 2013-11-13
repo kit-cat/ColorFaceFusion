@@ -23,7 +23,7 @@ Face Fusion is a sample application for the Kinect for Windows SDK that guides y
 * Kinect for Windows sensor
 * Kinect for Windows SDK v1.7 or later
 * DirectX 11-compatible GPU
-See also [url:Kinect SDK System Requirements|http://msdn.microsoft.com/en-us/library/hh855359.aspx]. In particular, to run Kinect Fusion:
+See also the Kinect SDK System Requirements: http://msdn.microsoft.com/en-us/library/hh855359.aspx. In particular, to run Kinect Fusion:
 
 _Kinect Fusion has been tested on the NVidia GeForce GTX560, and the AMD Radeon 6950. These cards, or higher end cards from the same product lines are expected to be able to run at interactive rates._
 
