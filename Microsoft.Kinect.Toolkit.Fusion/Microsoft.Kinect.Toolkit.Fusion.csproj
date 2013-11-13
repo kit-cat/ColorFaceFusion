@@ -71,14 +71,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\external\KinectToolkit\KinectFusion170_32.dll">
-      <Link>KinectFusion170_32.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\external\KinectToolkit\KinectFusion170_64.dll">
-      <Link>KinectFusion170_64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="KinectFusion180_32.dll" />
+    <Content Include="KinectFusion180_64.dll" />
   </ItemGroup>
   <PropertyGroup Label="UserMacros">
     <KinectToolkitDllVersion>170</KinectToolkitDllVersion>
