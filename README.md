@@ -1,14 +1,13 @@
-Color Face Fusion
+## Color Face Fusion
 
 Adds color support, via PLY models, ColorMesh and ColorReconstruction to Joshua Blake's Face Fusion : https://facefusion.codeplex.com/. As such, requires Kinect for Windows SDK 1.8 or later (original Face Fusion only requires 1.7).
 
 Here is the original Face Fusion readme :
 
-! Summary
+# Summary
 Scan your head in 3D simply by turning your head in front of a fixed Kinect for Windows sensor.
 
-! Features
-
+# Features
 Face Fusion is a sample application for the Kinect for Windows SDK that guides you through the process of making a 3D scan of your head. Face Fusion has the following features:
 
 * Uses Kinect Fusion to perform object scanning 
@@ -19,32 +18,32 @@ Face Fusion is a sample application for the Kinect for Windows SDK that guides y
 * Audio tone feedback of the scan progress, so you don't need to look at the screen to complete a self-scan.
 * Export the finished scan in .obj format for use in other applications.
 
-! Requirements
+# Requirements
 * Windows 7 or 8
 * Kinect for Windows sensor
 * Kinect for Windows SDK v1.7 or later
 * DirectX 11-compatible GPU
-See also [url:Kinect SDK System Requirements|http://msdn.microsoft.com/en-us/library/hh855359.aspx]. In particular, to run Kinect Fusion:
+See also the Kinect SDK System Requirements: http://msdn.microsoft.com/en-us/library/hh855359.aspx. In particular, to run Kinect Fusion:
 
 _Kinect Fusion has been tested on the NVidia GeForce GTX560, and the AMD Radeon 6950. These cards, or higher end cards from the same product lines are expected to be able to run at interactive rates._
 
 Kinect Fusion needs to run at approximately 30 FPS to successfully track and scan. It can run on a laptop if the laptop has a decent discrete video card. Unfortunately, *integrated graphics cards such as Intel HD Graphics are too slow to run Kinect Fusion.* 
 
-! Physical setup
+# Physical setup
 
 Position the sensor near the computer display. For best results, mount the sensor at approximately head height using a stand, tripod, or other mechanism. 
 
 You will need about 6 feet in front of the sensor to move around in.
 
-! How to use
+# How to use
 
-# Plug in the Kinect sensor and run Face Fusion
-# Position yourself in front of the Kinect for Windows sensor
-# If necessary, move until you see two circles overlaid on your head and neck in the depth image. The circles indicate the application is tracking those joints.
-# Say "Fusion Start". This will start the scan process and you will hear the audio tone feedback.
-# When the audio tones play a triad chord, the scan has fully integrated the current view of your head. Turn your head until the audio tone slides down a bit, then pause there while the application integrates the data from the new view. As the new view is integrated, the tone will slide upward again until it changes to the triad chord.
-# When you want to stop or pause the scan, say "Kinect Pause". The audio tones and scan will stop, when you will see the reconstructed model rotate.
-# Click Export to save an .obj file of the scan. 
+* Plug in the Kinect sensor and run Face Fusion
+* Position yourself in front of the Kinect for Windows sensor
+* If necessary, move until you see two circles overlaid on your head and neck in the depth image. The circles indicate the application is tracking those joints.
+* Say "Fusion Start". This will start the scan process and you will hear the audio tone feedback.
+* When the audio tones play a triad chord, the scan has fully integrated the current view of your head. Turn your head until the audio tone slides down a bit, then pause there while the application integrates the data from the new view. As the new view is integrated, the tone will slide upward again until it changes to the triad chord.
+* When you want to stop or pause the scan, say "Kinect Pause". The audio tones and scan will stop, when you will see the reconstructed model rotate.
+* Click Export to save an .obj (.ply in ColorFaceFusion) file of the scan. 
 
 Tips for scanning:
 * Move slowly and let the audio feedback guide you about when to pause and when to move again
@@ -62,7 +61,7 @@ If you want to reset the scan, say "Fusion Reset" or click the Reset button.
 
 Theoretically, you can say "Fusion Pause" to pause the scan and then say "Fusion Start" to unpause and continue, but it may be difficult for the scan data to integrate across the gap if you have moved much. 
 
-!! Voice commands
+# Voice commands
 
 Face Fusion responds to the following voice commands:
 
@@ -70,18 +69,18 @@ Face Fusion responds to the following voice commands:
 * *Fusion Pause* - Pause the scan and rotate the 3D scan model.
 * *Fusion Reset* - Clear the scan and start again.
 
-! Need help?
+# Need help?
 
-If you need help, please check [url:https://facefusion.codeplex.com/] 
+If you need help, please check https://facefusion.codeplex.com/
 
-! License
+# License
 
-The Face Fusion project software is licensed under the MIT license. See [url:https://facefusion.codeplex.com/license] for details.
+The Face Fusion project software is licensed under the MIT license. See https://facefusion.codeplex.com/license for details.
 
 The Microsoft.Kinect.Toolkit.* projects' source code and Kinect Toolkit dll files are are from the Kinect for Windows Developer Toolkit and distributed per the terms of the Kinect SDK EULA: http://www.microsoft.com/en-us/kinectforwindows/develop/sdk-eula.aspx. Original toolkit downloaded from [url:http://www.microsoft.com/en-us/kinectforwindows/develop/developer-downloads.aspx]. Modifications are commented and dated.
 
-MVVM Light is included under the MIT License. [url:https://mvvmlight.codeplex.com/]
+MVVM Light is included under the MIT License. https://mvvmlight.codeplex.com/
 
-NAudio is included under the Microsoft Public License (Ms-PL). [url:https://naudio.codeplex.com/]
+NAudio is included under the Microsoft Public License (Ms-PL). https://naudio.codeplex.com/
 
-Blake.NUI is available from [url:https://blakenui.codeplex.com/].
+Blake.NUI is available from https://blakenui.codeplex.com/.
