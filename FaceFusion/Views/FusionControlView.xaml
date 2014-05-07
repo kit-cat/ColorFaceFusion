@@ -23,6 +23,10 @@
                           IsChecked="{Binding FusionManager.IsIntegrationPaused}"
                           FontSize="16"
                           Margin="5" />
+                <CheckBox Content="Integrate Color"
+                          FontSize="16"
+                          IsChecked="{Binding IsColorIntegrated}"
+                          Margin="5" />
                 <CheckBox Content="Show RGB Overlays"
                           FontSize="16"
                           IsChecked="{Binding ShowRGBOverlay}"

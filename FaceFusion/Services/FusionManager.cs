@@ -188,6 +188,7 @@ namespace FaceFusion.Services
 
         public double CurrentRotationDegrees { get; set; }
         public double RotationRateInDegrees { get; set; }
+        public bool   IntegratingColor { get; set; }
 
         #region ProcessedFrameCount
 
@@ -745,6 +746,7 @@ namespace FaceFusion.Services
             // Reset the reconstruction
             this.ResetReconstruction(_currentVolumeCenter);
 
+            IntegratingColor = false;
             _audioManager.Start();
         }
 
@@ -882,13 +884,20 @@ namespace FaceFusion.Services
 
                 if (!IsIntegrationPaused)
                 {
-                    FusionColorImageFrame frame = new FusionColorImageFrame((int)colorSize.Width, (int)colorSize.Height);
+                    if (IntegratingColor)
+                    {
+                        FusionColorImageFrame frame = new FusionColorImageFrame((int)colorSize.Width, (int)colorSize.Height);
+                        Single colorIntegrationAngle = 10.0f;
 
-                    int[] samples = new int[colorPixels.Length / 4];
-                    Buffer.BlockCopy(colorPixels, 0, samples, 0, colorPixels.Length);
-
-                    frame.CopyPixelDataFrom(samples);
-                    this.volume.IntegrateFrame(depthFloatBuffer, frame, FusionDepthProcessor.DefaultIntegrationWeight, FusionDepthProcessor.DefaultColorIntegrationOfAllAngles, this.worldToCameraTransform);
+                        int[] intColorPixels = new int[colorPixels.Length / 4];
+                        Buffer.BlockCopy(colorPixels, 0, intColorPixels, 0, colorPixels.Length);
+                        frame.CopyPixelDataFrom(intColorPixels);
+                        this.volume.IntegrateFrame(depthFloatBuffer, frame, FusionDepthProcessor.DefaultIntegrationWeight, colorIntegrationAngle, this.worldToCameraTransform);
+                    }
+                    else
+                    {
+                        this.volume.IntegrateFrame(depthFloatBuffer, IntegrationWeight, this.worldToCameraTransform);
+                    }
                 }
 
                 this.trackingErrorCount = 0;

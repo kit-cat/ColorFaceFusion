@@ -30,6 +30,7 @@ namespace FaceFusion.Services
         public const string StartCommand = "Fusion Start";
         public const string ResetCommand = "Fusion Reset";
         public const string PauseCommand = "Fusion Pause";
+        public const string ColorCommand = "Fusion Color";
 
         private bool _isListening;
         public bool IsListening
@@ -85,6 +86,15 @@ namespace FaceFusion.Services
             FusionPause(this, EventArgs.Empty);
         }
 
+        public event EventHandler FusionColor;
+
+        private void RaiseFusionColor()
+        {
+            if (FusionColor == null)
+                return;
+            FusionColor(this, EventArgs.Empty);
+        }
+
         #endregion
 
         public VoiceCommand(KinectSensor sensor)
@@ -138,6 +148,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             phrases.Add(StartCommand);
             phrases.Add(PauseCommand);
             phrases.Add(ResetCommand);
+            phrases.Add(ColorCommand);
 
             var gb = new GrammarBuilder();
             //Specify the culture to match the recognizer in case we are running in a different culture.                                 
@@ -224,6 +235,13 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                 syncContext.Post((o) =>
                 {
                     RaiseFusionReset();
+                }, null);
+            }
+            else if (e.Result.Text == ColorCommand)
+            {
+                syncContext.Post((o) =>
+                {
+                    RaiseFusionColor();
                 }, null);
             }
         }

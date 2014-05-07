@@ -620,6 +620,44 @@ namespace FaceFusion.ViewModels
 
         #endregion
 
+        #region IsColorIntegrated
+
+        /// <summary>
+        /// The <see cref="IsColorIntegrated" /> property's name.
+        /// </summary>
+        public const string IsColorIntegratedPropertyName = "IsColorIntegrated";
+
+        private bool _isColorIntegrated = false;
+
+        /// <summary>
+        /// Gets the IsColorIntegrated property.
+        /// </summary>
+        public bool IsColorIntegrated
+        {
+            get
+            {
+                return _isColorIntegrated;
+            }
+
+            set
+            {
+                if (_isColorIntegrated == value)
+                {
+                    return;
+                }
+
+                ResetFusion();
+                var oldValue = _isColorIntegrated;
+                _isColorIntegrated = value;
+                FusionManager.IntegratingColor = value;
+
+                // Update bindings, no broadcast
+                RaisePropertyChanged(IsColorIntegratedPropertyName);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Constructors
@@ -869,8 +907,10 @@ namespace FaceFusion.ViewModels
                         }
                         VoiceHeard = "Heard: Fusion Start";
                     };
-
-
+                _voiceCommand.FusionColor += (s, e) =>
+                    {
+                        this.IsColorIntegrated = !this.IsColorIntegrated;
+                    };
                 if (FusionManager != null)
                 {
                     FusionManager.Dispose();
